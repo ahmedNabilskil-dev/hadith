@@ -1,0 +1,8 @@
+{
+  "name": "Hadith",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite",
+  "id": "bea924e2"
+}
