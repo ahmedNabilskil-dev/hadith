@@ -1,0 +1,22 @@
+.custom-tab-bar {
+  background-color: #f8f8f8; /* Light background color */
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2); /* Soft shadow */
+}
+
+.custom-tab-bar .tab-button {
+  color: #4a4a4a; /* Default tab color */
+  transition: color 0.3s; /* Smooth color transition */
+}
+
+.custom-tab-bar .tab-button:hover {
+  color: #007bff; /* Change color on hover */
+}
+
+.custom-tab-bar .tab-button.tab-selected {
+  color: #007bff; /* Selected tab color */
+  font-weight: bold; /* Make the selected tab bold */
+}
+
+.custom-tab-bar ion-label {
+  font-size: 14px; /* Font size for labels */
+}

@@ -1,33 +1,43 @@
 import { IonCard, IonCardContent, IonText } from "@ionic/react";
+import "./HadithCard.css"; // Make sure to create this CSS file
 
 const HadithCard: React.FC<{ hadith: any }> = ({ hadith }) => {
   function parseTextWithLinks(text: string) {
     return text.replace(/{\[(\d+)]}/g, (match, number) => {
-      const anchorLink = `#ref${number}`;
-      return `<a href="${anchorLink}">${match}</a>`;
+      const _ = `#ref${number}`;
+      return `${match}`;
     });
   }
 
   return (
-    <IonCard className="ion-margin-bottom">
+    <IonCard className="hadith-card ion-margin-bottom">
       <IonCardContent>
         {/* Hadith Number */}
         <IonText color="primary" className="text-lg font-bold">
-          <div className="ion-text-end">{`حديث رقم: ${hadith.hadith_no}`}</div>
+          <div className="ion-text-start">{`حديث رقم: ${hadith.hadith_no}`}</div>
         </IonText>
 
         {/* Hadith Text */}
         <div
-          className="ion-text-end ion-margin-top"
+          className="ion-text-start ion-margin-top hadith-text"
           dangerouslySetInnerHTML={{
             __html: parseTextWithLinks(hadith.hadith_text),
           }}
         ></div>
 
         {/* Reference and Hukm */}
-        <div className="ion-margin-top ion-text-end text-sm">
-          <IonText color="medium">{hadith.reference}</IonText>
-          <IonText color="success" className="font-semibold">
+        <div
+          className="ion-margin-top"
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <IonText color="medium" className="text-sm">
+            {hadith.reference}
+          </IonText>
+          <IonText color="success" className="font-semibold text-sm">
             {hadith.hukm}
           </IonText>
         </div>

@@ -1,31 +1,24 @@
-import React from "react";
 import {
   IonHeader,
   IonToolbar,
-  IonTitle,
   IonButtons,
-  IonButton,
-  IonIcon,
+  IonTitle,
+  IonBackButton,
 } from "@ionic/react";
-import { arrowBack } from "ionicons/icons";
 
-const Header: React.FC<{
+interface CustomHeaderProps {
   title: string;
-  showBackButton?: boolean;
-  onBack?: () => void;
-}> = ({ title, showBackButton = false, onBack }) => (
-  <IonHeader>
-    <IonToolbar>
-      {showBackButton && (
-        <IonButtons slot="start">
-          <IonButton onClick={onBack}>
-            <IonIcon icon={arrowBack} />
-          </IonButton>
-        </IonButtons>
-      )}
-      <IonTitle>{title}</IonTitle>
-    </IonToolbar>
-  </IonHeader>
-);
+}
 
-export default Header;
+const CustomHeader: React.FC<CustomHeaderProps> = ({ title }) => {
+  return (
+    <IonHeader>
+      <IonToolbar>
+        <IonButtons slot="start"></IonButtons>
+        <IonTitle className="ion-text-center">{title}</IonTitle>
+      </IonToolbar>
+    </IonHeader>
+  );
+};
+
+export default CustomHeader;

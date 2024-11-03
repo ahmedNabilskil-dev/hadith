@@ -1,0 +1,22 @@
+.navigation-arrows {
+  padding: 10px 20px;
+}
+
+.arrow-button {
+  background-color: #007bff; /* Primary color for buttons */
+  color: white; /* White icon color */
+  border-radius: 50%; /* Circular buttons */
+  width: 60px; /* Fixed width */
+  height: 60px; /* Fixed height */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); /* Soft shadow */
+  transition: background-color 0.3s, transform 0.3s; /* Smooth transitions */
+}
+
+.arrow-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  transform: translateY(-3px); /* Lift effect on hover */
+}
+
+.arrow-icon {
+  font-size: 28px; /* Size of the icons */
+}

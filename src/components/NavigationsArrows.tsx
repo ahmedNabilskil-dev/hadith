@@ -1,5 +1,6 @@
 import { IonButton, IonIcon, IonRow } from "@ionic/react";
 import { chevronForwardOutline, chevronBackOutline } from "ionicons/icons";
+import "./NavigationArrows.css"; // Make sure to create this CSS file
 
 const NavigationArrows: React.FC<{
   onPrev: () => void;
@@ -7,7 +8,7 @@ const NavigationArrows: React.FC<{
 }> = ({ onPrev, onNext }) => {
   return (
     <IonRow
-      className="ion-justify-content-between ion-align-items-center ion-padding"
+      className="navigation-arrows ion-justify-content-between ion-align-items-center ion-padding"
       style={{
         position: "fixed",
         bottom: "20px",
@@ -16,11 +17,11 @@ const NavigationArrows: React.FC<{
         zIndex: 10,
       }}
     >
-      <IonButton onClick={onPrev} color="success" shape="round" size="large">
-        <IonIcon icon={chevronBackOutline} slot="icon-only" />
+      <IonButton onClick={onPrev} className="arrow-button">
+        <IonIcon icon={chevronForwardOutline} className="arrow-icon" />
       </IonButton>
-      <IonButton onClick={onNext} color="success" shape="round" size="large">
-        <IonIcon icon={chevronForwardOutline} slot="icon-only" />
+      <IonButton onClick={onNext} className="arrow-button">
+        <IonIcon icon={chevronBackOutline} className="arrow-icon" />
       </IonButton>
     </IonRow>
   );

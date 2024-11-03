@@ -11,9 +11,12 @@ import {
   IonText,
   IonTitle,
   IonToolbar,
+  IonCard,
+  IonCardContent,
 } from "@ionic/react";
 import { useHistory } from "react-router-dom";
 import { useMaqsad } from "../Providers/SystemProvider";
+import "./MaqsadScreen.css";
 
 interface MaqsadScreenProps {}
 
@@ -29,6 +32,7 @@ const MaqsadScreen: React.FC<MaqsadScreenProps> = () => {
     return (
       <div className="ion-text-center ion-padding">
         <IonSpinner name="crescent" />
+        <IonText>Loading Maqsads...</IonText>
       </div>
     );
   }
@@ -37,46 +41,34 @@ const MaqsadScreen: React.FC<MaqsadScreenProps> = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Maqsads</IonTitle>
+          <IonTitle className="ion-text-center">المقاصد</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen>
-        <IonGrid className="ion-padding ion-margin-top">
+      <IonContent fullscreen className="ion-padding">
+        <IonGrid>
           <IonRow className="ion-justify-content-center">
             {maqsads?.map((maqsad) => (
-              <IonCol
-                size="6"
-                key={maqsad._id}
-                className="ion-align-items-center ion-margin-bottom"
-              >
-                <IonButton
-                  fill="clear"
-                  expand="block"
+              <IonCol size="6" key={maqsad._id}>
+                <IonCard
+                  button
                   onClick={() => handleNavigation(maqsad._id)}
-                  className="ion-text-center ion-padding ion-no-shadow"
+                  className="maqsad-card"
                 >
-                  <div
-                    className="ion-text-center"
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "center",
-                    }}
-                  >
+                  <IonCardContent className="ion-text-center">
                     <IonImg
                       src={maqsad.icon}
                       className="maqsad-icon"
                       style={{
-                        marginBottom: "8px",
-                        width: "60px",
-                        height: "60px",
+                        borderRadius: "50%",
+                        boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.15)",
+                        width: "50px",
+                        height: "50px",
+                        marginBottom: "10px",
                       }}
                     />
-                    <IonText className="ion-text-center ion-font-bold">
-                      {maqsad.title}
-                    </IonText>
-                  </div>
-                </IonButton>
+                    <IonText className="maqsad-title">{maqsad.title}</IonText>
+                  </IonCardContent>
+                </IonCard>
               </IonCol>
             ))}
           </IonRow>

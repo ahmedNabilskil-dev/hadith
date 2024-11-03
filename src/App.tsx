@@ -10,19 +10,23 @@ import {
   setupIonicReact,
 } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
-import { ellipse, square, triangle } from "ionicons/icons";
+
+// Import realistic icons from ionicons
+import { bookOutline, searchOutline, settingsOutline } from "ionicons/icons";
+
 import Tab2 from "./pages/Tab2";
 import Tab3 from "./pages/Tab3";
+import MaqsadScreen from "./pages/MaqsadScreen";
+import { MaqsadProvider } from "./Providers/SystemProvider";
+import BooksScreen from "./pages/BookScreen";
+import CategoriesScreen from "./pages/CategoriesScreen";
+import HadithScreen from "./pages/HadithScreen";
 
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
-
-/* Basic CSS for apps built with Ionic */
 import "@ionic/react/css/normalize.css";
 import "@ionic/react/css/structure.css";
 import "@ionic/react/css/typography.css";
-
-/* Optional CSS utils that can be commented out */
 import "@ionic/react/css/padding.css";
 import "@ionic/react/css/float-elements.css";
 import "@ionic/react/css/text-alignment.css";
@@ -30,29 +34,14 @@ import "@ionic/react/css/text-transformation.css";
 import "@ionic/react/css/flex-utils.css";
 import "@ionic/react/css/display.css";
 
-/**
- * Ionic Dark Mode
- * -----------------------------------------------------
- * For more info, please see:
- * https://ionicframework.com/docs/theming/dark-mode
- */
-
-/* import '@ionic/react/css/palettes/dark.always.css'; */
-/* import '@ionic/react/css/palettes/dark.class.css'; */
-//import "@ionic/react/css/palettes/dark.system.css";
-
 /* Theme variables */
 import "./theme/variables.css";
-import MaqsadScreen from "./pages/MaqsadScreen";
-import { MaqsadProvider } from "./Providers/SystemProvider";
-import BooksScreen from "./pages/BookScreen";
-import CategoriesScreen from "./pages/CategoriesScreen";
-import HadithScreen from "./pages/HadithScreen";
+import "./App.css"; // Create this CSS file for custom styles
 
 setupIonicReact();
 
 const App: React.FC = () => (
-  <IonApp>
+  <IonApp style={{ direction: "rtl" }}>
     <MaqsadProvider>
       <IonReactRouter>
         <IonTabs>
@@ -69,18 +58,18 @@ const App: React.FC = () => (
             <Route exact path="/tab2" component={Tab2} />
             <Route exact path="/tab3" component={Tab3} />
           </IonRouterOutlet>
-          <IonTabBar slot="bottom">
+          <IonTabBar slot="bottom" className="custom-tab-bar">
             <IonTabButton tab="Maqsads" href="/maqsad">
-              <IonIcon aria-hidden="true" icon={triangle} />
+              <IonIcon aria-hidden="true" icon={bookOutline} />
               <IonLabel>Maqsads</IonLabel>
             </IonTabButton>
             <IonTabButton tab="tab2" href="/tab2">
-              <IonIcon aria-hidden="true" icon={ellipse} />
-              <IonLabel>Tab 2</IonLabel>
+              <IonIcon aria-hidden="true" icon={searchOutline} />
+              <IonLabel>Search</IonLabel>
             </IonTabButton>
             <IonTabButton tab="tab3" href="/tab3">
-              <IonIcon aria-hidden="true" icon={square} />
-              <IonLabel>Tab 3</IonLabel>
+              <IonIcon aria-hidden="true" icon={settingsOutline} />
+              <IonLabel>Settings</IonLabel>
             </IonTabButton>
           </IonTabBar>
         </IonTabs>

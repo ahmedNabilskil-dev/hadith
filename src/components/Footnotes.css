@@ -1,0 +1,12 @@
+.footnotes-section {
+  background-color: #f3f4f6; /* Slightly darker background for contrast */
+  border: 1px solid #d1d5db; /* Subtle border */
+  border-radius: 12px; /* Rounded corners */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  padding: 16px; /* Padding for spacing */
+}
+
+.footnote-text {
+  font-size: 1rem; /* Standard font size */
+  color: #555; /* Medium dark text */
+}
