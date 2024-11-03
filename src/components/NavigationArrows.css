@@ -14,7 +14,6 @@
 
 .arrow-button:hover {
   background-color: #0056b3; /* Darker blue on hover */
-  transform: translateY(-3px); /* Lift effect on hover */
 }
 
 .arrow-icon {

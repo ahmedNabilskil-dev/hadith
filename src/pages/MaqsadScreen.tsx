@@ -18,9 +18,7 @@ import { useHistory } from "react-router-dom";
 import { useMaqsad } from "../Providers/SystemProvider";
 import "./MaqsadScreen.css";
 
-interface MaqsadScreenProps {}
-
-const MaqsadScreen: React.FC<MaqsadScreenProps> = () => {
+const MaqsadScreen: React.FC = () => {
   const { maqsads, loading } = useMaqsad();
   const history = useHistory();
 
@@ -48,7 +46,7 @@ const MaqsadScreen: React.FC<MaqsadScreenProps> = () => {
         <IonGrid>
           <IonRow className="ion-justify-content-center">
             {maqsads?.map((maqsad) => (
-              <IonCol size="6" key={maqsad._id}>
+              <IonCol size="10" key={maqsad._id}>
                 <IonCard
                   button
                   onClick={() => handleNavigation(maqsad._id)}
