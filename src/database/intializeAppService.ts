@@ -1,6 +1,6 @@
 import { platform } from "../App";
-import { ISQLiteService } from "../services/sqliteService";
-import { IStorageService } from "../services/storageService";
+import { ISQLiteService } from "./sqliteService";
+import { IStorageService } from "./storageService";
 
 export interface IInitializeAppService {
   initializeApp(): Promise<boolean>;
