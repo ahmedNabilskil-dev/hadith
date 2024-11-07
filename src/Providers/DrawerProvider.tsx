@@ -52,7 +52,7 @@ export const DrawerProvider: React.FC<{ children: React.ReactNode }> = ({
   useEffect(() => {
     const fetchLastVisitedHadith = async () => {
       const response = await axios.get(`${basePath}/hadiths/lat-visited`);
-      const last = response.data.lastVisitedHadith;
+      const last = response.data.hadith_no;
       if (last) {
         addDrawer({
           Component: LastVisitedHadithDrw,

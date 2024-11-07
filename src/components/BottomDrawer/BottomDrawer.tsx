@@ -43,7 +43,7 @@ const BottomDrawer: React.FC<BottomDrawerProps> = ({
             <IonIcon icon={closeOutline} />
           </IonButton>
         </div>
-        <IonContent className="drawer-content">{children}</IonContent>
+        <div className="drawer-content">{children}</div>
       </div>
     </div>
   );

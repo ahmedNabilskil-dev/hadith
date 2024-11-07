@@ -1,5 +1,5 @@
 import React from "react";
-import { IonButton, IonContent, IonText, IonToolbar } from "@ionic/react";
+import { IonButton, IonText, IonToolbar } from "@ionic/react";
 import { useHistory } from "react-router-dom";
 import "./LastVisitedHadith.css";
 import { DrawerProps } from "../../Providers/DrawerProvider";
@@ -20,26 +20,26 @@ const LastVisitedHadithDrw: React.FC<LastVisitedHadithDrwProps> = ({
   };
 
   return (
-    <IonContent className="drawer-content">
+    <div className="drawer-content">
       <IonToolbar className="drawer-header">
-        <IonText className="drawer-title">Continue Reading?</IonText>
+        <IonText className="drawer-title">متابعة القراءة؟</IonText>
       </IonToolbar>
       <IonText className="drawer-message">
-        Do you want to continue reading from where you last left off?
+        هل تريد متابعة القراءة من حيث توقفت آخر مرة؟
       </IonText>
       <div className="drawer-buttons">
         <IonButton expand="block" color="medium" onClick={onClose}>
-          No, Thanks
+          لا، شكرًا
         </IonButton>
         <IonButton
           expand="block"
           color="primary"
           onClick={handleContinueReading}
         >
-          Yes, Continue
+          نعم، متابعة
         </IonButton>
       </div>
-    </IonContent>
+    </div>
   );
 };
 
