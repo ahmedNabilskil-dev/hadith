@@ -26,15 +26,6 @@ const MaqsadScreen: React.FC = () => {
     history.push(`/books/${maqsadId}`);
   };
 
-  if (loading) {
-    return (
-      <div className="ion-text-center ion-padding">
-        <IonSpinner name="crescent" />
-        <IonText>Loading Maqsads...</IonText>
-      </div>
-    );
-  }
-
   return (
     <IonPage>
       <IonHeader>
@@ -43,7 +34,10 @@ const MaqsadScreen: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen className="ion-padding">
-        <IonGrid>
+        {loading?<div className="ion-text-center ion-padding">
+        <IonSpinner name="crescent" />
+        <IonText>Loading Maqsads...</IonText>
+      </div>:<IonGrid>
           <IonRow className="ion-justify-content-center">
             {maqsads?.map((maqsad) => (
               <IonCol size="10" key={maqsad._id}>
@@ -70,7 +64,8 @@ const MaqsadScreen: React.FC = () => {
               </IonCol>
             ))}
           </IonRow>
-        </IonGrid>
+        </IonGrid>}
+        
       </IonContent>
     </IonPage>
   );
