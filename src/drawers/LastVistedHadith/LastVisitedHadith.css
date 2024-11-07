@@ -1,0 +1,34 @@
+/* DrawerContent.css */
+.drawer-content {
+  padding: 16px;
+  text-align: center;
+}
+
+.drawer-header {
+  text-align: center;
+  padding-top: 8px;
+}
+
+.drawer-title {
+  font-weight: bold;
+  font-size: 18px;
+  color: #333333;
+}
+
+.drawer-message {
+  font-size: 16px;
+  color: #666666;
+  margin-top: 12px;
+  margin-bottom: 20px;
+}
+
+.drawer-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.drawer-buttons .ion-button {
+  font-weight: bold;
+  border-radius: 8px;
+}
