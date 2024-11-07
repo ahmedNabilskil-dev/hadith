@@ -1,7 +1,7 @@
 import React from "react";
 import { IonButton, IonContent, IonText, IonToolbar } from "@ionic/react";
 import { useHistory } from "react-router-dom";
-import "./DrawerContent.css";
+import "./LastVisitedHadith.css";
 import { DrawerProps } from "../../Providers/DrawerProvider";
 
 interface LastVisitedHadithDrwProps extends DrawerProps {
