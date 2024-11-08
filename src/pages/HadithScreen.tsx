@@ -44,7 +44,7 @@ const HadithScreen: React.FC<HadithScreenV2Props> = () => {
   useEffect(()=>{
     localStorage.setItem('last-visited-hadith',hadiths[0]?.hadith_no)
     SetIsVaf(hadiths[0]?.addedToFav)
-  },[hadiths[0]?.addedToFav])
+  },[hadiths])
   return (
     <IonPage>
       <IonHeader>
