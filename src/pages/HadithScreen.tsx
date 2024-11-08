@@ -3,6 +3,8 @@ import {
   IonCard,
   IonCardContent,
   IonContent,
+  IonFab,
+  IonFabButton,
   IonHeader,
   IonIcon,
   IonPage,
@@ -16,10 +18,12 @@ import HadithCard from "../components/HadithCard";
 import NavigationArrows from "../components/NavigationsArrows";
 import { useHadiths } from "../hooks/useHadiths";
 import "./BookScreen.css";
-import { heartOutline, chevronForwardOutline,heart } from "ionicons/icons";
+import { heartOutline, chevronForwardOutline,heart, createOutline } from "ionicons/icons";
 import axios from "axios";
 import { basePath } from "../common/env";
 import { useEffect, useState } from "react";
+import { useDrawer } from "../Providers/DrawerProvider";
+import AddNote from "../drawers/Notes/Notes";
 
 interface HadithScreenV2Props {}
 
@@ -36,6 +40,8 @@ const HadithScreen: React.FC<HadithScreenV2Props> = () => {
   const history = useHistory();
   const handleBack = () => history.goBack();
 
+ const {addDrawer} = useDrawer()
+
   const handleAddToFav =async ()=>{
     SetIsVaf(!isFav)
    await axios.post(`${basePath}/hadiths/add-to-fav`,undefined,{params:{id:hadiths[0]?._id}});
@@ -45,6 +51,11 @@ const HadithScreen: React.FC<HadithScreenV2Props> = () => {
     localStorage.setItem('last-visited-hadith',hadiths[0]?.hadith_no)
     SetIsVaf(hadiths[0]?.addedToFav)
   },[hadiths])
+
+  const openAddNoteDrawer=()=>{
+    addDrawer({Component:AddNote,isOpen:true,props:{hadith:hadiths[0]}})
+  }
+
   return (
     <IonPage>
       <IonHeader>
@@ -78,6 +89,11 @@ const HadithScreen: React.FC<HadithScreenV2Props> = () => {
           <FootnotesSection footnotes={footnotes} takhreej={takhreej} />
         )}
         <NavigationArrows onPrev={goToPrevHadith} onNext={goToNextHadith} />
+        <IonFab style={{ top: '20px', left: '20px' }} slot="fixed">
+          <IonFabButton color="primary" onClick={openAddNoteDrawer}>
+            <IonIcon icon={createOutline} />
+          </IonFabButton>
+        </IonFab>
         <div style={{ height: 80 }}></div>
       </IonContent>
     </IonPage>

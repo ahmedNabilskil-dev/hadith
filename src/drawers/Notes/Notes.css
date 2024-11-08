@@ -1,0 +1,71 @@
+/* Notes.css */
+.add-note-container {
+  padding: 20px;
+  background-color: #f7f9fc; /* Light background for contrast */
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Softer, larger shadow for depth */
+  max-width: 700px;
+  margin: 40px auto;
+  border: 1px solid #e0e6ed; /* Subtle border for definition */
+}
+
+.add-note-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #2a3b5a;
+  text-align: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; /* Modern font */
+  margin-bottom: 30px;
+}
+
+.note-input-item {
+  margin-bottom: 10px;
+  margin-top: 10px;
+  --highlight-color-focused: #0a8bff; /* Vibrant blue highlight */
+  border-radius: 10px;
+  background-color: #ffffff; /* Clean white input background */
+  padding: 8px;
+  border: 1px solid #dce3ec; /* Soft border around input items */
+  transition: border-color 0.3s, box-shadow 0.3s; /* Smooth transition effect */
+}
+
+.note-input-item:focus-within {
+  border-color: #0a8bff; /* Highlight border on focus */
+  box-shadow: 0 0 8px rgba(10, 139, 255, 0.2); /* Subtle blue glow on focus */
+}
+
+.note-input,
+.note-textarea {
+  font-size: 16px;
+  color: #3b4b6a;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  border:none;
+  outline: none;
+  border: none; /* Removes border from input fields */
+  outline: none; /* Removes default outline */
+}
+
+.note-textarea {
+  min-height: 120px; /* Ensure textarea is larger */
+  resize: vertical; /* Allow user to resize vertically */
+}
+
+.add-note-button {
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 600;
+  background-color: #0a8bff;
+  color: #ffffff;
+  transition: background-color 0.3s, transform 0.2s; /* Smooth hover and click effects */
+}
+
+.add-note-button:hover {
+  background-color: #086bbd;
+  transform: translateY(-2px); /* Slight lift on hover */
+}
+
+.add-note-button:active {
+  background-color: #07599c;
+  transform: translateY(0); /* Reset lift on click */
+}
+

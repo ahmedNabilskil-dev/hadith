@@ -97,9 +97,7 @@ import { chevronForwardOutline } from "ionicons/icons";
             onIonInfinite={loadData}
             disabled={!hasMore}
           >
-            <IonInfiniteScrollContent
-              loadingText="Loading more favorites..."
-            />
+          <IonInfiniteScrollContent loadingText="جاري تحميل المزيد..." />
           </IonInfiniteScroll>
         </IonContent>
       </IonPage>

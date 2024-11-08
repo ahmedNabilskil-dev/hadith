@@ -1,0 +1,56 @@
+/* Styling for Notes Page */
+.notes-title {
+    font-family: "Cairo", sans-serif;
+    font-weight: bold;
+    color: #3b4b6a;
+    text-align: center;
+    padding-top: 8px;
+  }
+  
+  .notes-content {
+    background-color: #f7f9fc;
+  }
+  
+  .note-item {
+    border-radius: 12px;
+    margin: 8px 16px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    background-color: #ffffff;
+    padding: 5px;
+  }
+  
+  .note-item:hover {
+    transform: translateY(-4px);
+  }
+  
+  .note-thumbnail {
+    border-radius: 50%;
+    background-color: #e0f7fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+  }
+  
+  .note-title {
+    font-size: 18px;
+    color: #3b4b6a;
+    font-weight: bold;
+    margin-bottom: 4px;
+  }
+  
+  .note-content-preview {
+    font-size: 14px;
+    color: #6c757d;
+    margin-bottom: 8px;
+  }
+  
+  .note-date {
+    font-size: 12px;
+    font-style: italic;
+    display: block;
+    margin-top: 4px;
+    color: #adb5bd;
+  }
+  

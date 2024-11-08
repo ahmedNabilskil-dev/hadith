@@ -40,6 +40,7 @@ import "./App.css"; // Create this CSS file for custom styles
 import { DrawerProvider } from "./Providers/DrawerProvider";
 import "./theme/variables.css";
 import FavoriteHadiths from "./pages/Fav";
+import NotesPage from "./pages/Note/NotePage";
 
 export const platform = Capacitor.getPlatform();
 
@@ -56,6 +57,7 @@ const App: React.FC = () => {
                 <Route exact path="/maqsad" component={MaqsadScreen} />
                 <Route exact path="/books/:maqsadId" component={BooksScreen} />
                 <Route exact path="/fav" component={FavoriteHadiths} />
+                <Route exact path="/notes" component={NotesPage} />
                 <Route
                   exact
                   path="/categories/:bookId"
