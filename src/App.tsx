@@ -19,7 +19,7 @@ import CategoriesScreen from "./pages/CategoriesScreen";
 import HadithScreen from "./pages/HadithScreen";
 import MaqsadScreen from "./pages/MaqsadScreen";
 import Tab2 from "./pages/Tab2";
-import Tab3 from "./pages/Tab3";
+import Settings from "./pages/Setting";
 import { MaqsadProvider } from "./Providers/SystemProvider";
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
@@ -39,6 +39,7 @@ import React from "react";
 import "./App.css"; // Create this CSS file for custom styles
 import { DrawerProvider } from "./Providers/DrawerProvider";
 import "./theme/variables.css";
+import FavoriteHadiths from "./pages/Fav";
 
 export const platform = Capacitor.getPlatform();
 
@@ -54,6 +55,7 @@ const App: React.FC = () => {
               <IonRouterOutlet>
                 <Route exact path="/maqsad" component={MaqsadScreen} />
                 <Route exact path="/books/:maqsadId" component={BooksScreen} />
+                <Route exact path="/fav" component={FavoriteHadiths} />
                 <Route
                   exact
                   path="/categories/:bookId"
@@ -66,7 +68,7 @@ const App: React.FC = () => {
                 />
                 <Redirect exact from="/" to="/maqsad" />
                 <Route exact path="/tab2" component={Tab2} />
-                <Route exact path="/tab3" component={Tab3} />
+                <Route exact path="/settings" component={Settings} />
               </IonRouterOutlet>
               <IonTabBar slot="bottom" className="custom-tab-bar">
                 <IonTabButton tab="Maqsads" href="/maqsad">
@@ -77,7 +79,7 @@ const App: React.FC = () => {
                   <IonIcon aria-hidden="true" icon={searchOutline} />
                   <IonLabel>البحث</IonLabel>
                 </IonTabButton>
-                <IonTabButton tab="tab3" href="/tab3">
+                <IonTabButton tab="settings" href="/settings">
                   <IonIcon aria-hidden="true" icon={settingsOutline} />
                   <IonLabel>المذيد</IonLabel>
                 </IonTabButton>

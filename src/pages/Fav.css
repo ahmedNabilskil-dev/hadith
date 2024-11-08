@@ -1,0 +1,43 @@
+.setting-card {
+    border-radius: 12px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    margin-bottom: 16px;
+    background-color: #fff;
+  }
+  
+  .setting-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.2);
+  }
+  
+  .hadith-number {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #3a3a3a;
+    margin-bottom: 8px;
+  }
+  
+  .hadith-text {
+    font-size: 1rem;
+    color: #5a5a5a;
+    line-height: 1.5;
+    margin-bottom: 12px;
+  }
+  
+  .breadcrumb-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  
+  .breadcrumb {
+    font-size: 0.9rem;
+    color: #888;
+  }
+  
+  .breadcrumb:hover {
+    color: #007bff;
+    text-decoration: underline;
+  }
+  

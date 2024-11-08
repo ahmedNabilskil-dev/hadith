@@ -1,0 +1,27 @@
+.setting-card {
+    border-radius: 12px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    min-height: 150px; /* Minimum height to maintain uniformity */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .setting-card:hover {
+    transform: scale(1.05);
+  }
+  .setting-icon {
+    transition: box-shadow 0.3s ease;
+  }
+  .setting-title {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+  }
+  /* settingScreen.css */
+  .ion-row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
