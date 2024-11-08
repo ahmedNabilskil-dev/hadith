@@ -1,10 +1,12 @@
 import {
+    IonButton,
     IonCard,
     IonCardContent,
     IonCol,
     IonContent,
     IonGrid,
     IonHeader,
+    IonIcon,
     IonInfiniteScroll,
     IonInfiniteScrollContent,
     IonPage,
@@ -17,6 +19,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { basePath } from "../common/env";
+import { chevronForwardOutline } from "ionicons/icons";
   
   const FavoriteHadithPage: React.FC = () => {
     const history = useHistory();
@@ -49,14 +52,18 @@ import { basePath } from "../common/env";
          event.target.disabled = true; // Disable the scroll when no more data is available
       }
     };
+    const handleBack = () => history.goBack();
   
     return (
       <IonPage>
-        <IonHeader>
-          <IonToolbar>
-            <IonTitle className="ion-text-center">المفضلة</IonTitle>
-          </IonToolbar>
-        </IonHeader>
+      <IonHeader>
+        <IonToolbar>
+          <IonButton fill="clear" slot="start" onClick={handleBack}>
+            <IonIcon icon={chevronForwardOutline} />
+          </IonButton>
+          <IonTitle className="ion-text-center">المفضله</IonTitle>
+        </IonToolbar>
+      </IonHeader>
         <IonContent fullscreen className="ion-padding">
           <IonGrid>
             <IonRow>
