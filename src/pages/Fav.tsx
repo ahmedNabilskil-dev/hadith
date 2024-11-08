@@ -64,7 +64,7 @@ import { basePath } from "../common/env";
                 <IonCol size="12" key={hadith._id}>
                   <IonCard
                     button
-                    onClick={() => history.push(hadith.route)}
+                    onClick={() => history.push(`/hadith/${hadith.hadith_no}`)}
                     className="setting-card"
                   >
                     <IonCardContent>
