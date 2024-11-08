@@ -25,7 +25,7 @@ interface HadithScreenV2Props {}
 
 const HadithScreen: React.FC<HadithScreenV2Props> = () => {
   const { firstHadith } = useParams<{ firstHadith: string }>();
-  const { hadiths, goToNextHadith, goToPrevHadith,reload } = useHadiths(
+  const { hadiths, goToNextHadith, goToPrevHadith } = useHadiths(
     Number(firstHadith)
     );
     const [isFav,SetIsVaf] = useState(hadiths[0]?.addedToFav)
@@ -44,7 +44,7 @@ const HadithScreen: React.FC<HadithScreenV2Props> = () => {
   useEffect(()=>{
     localStorage.setItem('last-visited-hadith',hadiths[0]?.hadith_no)
     SetIsVaf(hadiths[0]?.addedToFav)
-  },[hadiths])
+  },[hadiths[0]?.addedToFav])
   return (
     <IonPage>
       <IonHeader>
