@@ -19,7 +19,7 @@ import "./BookScreen.css";
 import { heartOutline, chevronForwardOutline,heart } from "ionicons/icons";
 import axios from "axios";
 import { basePath } from "../common/env";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 interface HadithScreenV2Props {}
 
@@ -27,7 +27,9 @@ const HadithScreen: React.FC<HadithScreenV2Props> = () => {
   const { firstHadith } = useParams<{ firstHadith: string }>();
   const { hadiths, goToNextHadith, goToPrevHadith,reload } = useHadiths(
     Number(firstHadith)
-  );
+    );
+    const [isFav,SetIsVaf] = useState(hadiths[0]?.addedToFav)
+
 
   const takhreej = hadiths[hadiths.length - 1]?.takhreej;
   const footnotes = hadiths.flatMap((hadith) => hadith.footnotes);
@@ -35,12 +37,13 @@ const HadithScreen: React.FC<HadithScreenV2Props> = () => {
   const handleBack = () => history.goBack();
 
   const handleAddToFav =async ()=>{
-   await axios.post(`${basePath}/hadiths/add-to-fav`,undefined,{params:{hadith_no:hadiths[0]?.hadith_no}});
-   await reload()
+    SetIsVaf(!isFav)
+   await axios.post(`${basePath}/hadiths/add-to-fav`,undefined,{params:{id:hadiths[0]?._id}});
   }
 
   useEffect(()=>{
     localStorage.setItem('last-visited-hadith',hadiths[0]?.hadith_no)
+    SetIsVaf(hadiths[0]?.addedToFav)
   },[hadiths])
   return (
     <IonPage>
@@ -52,7 +55,7 @@ const HadithScreen: React.FC<HadithScreenV2Props> = () => {
           <IonTitle className="ion-text-center">الحديث</IonTitle>
           <IonButton fill={"clear"} slot="end" onClick={handleAddToFav}>
             <IonIcon size="large" style={{color:'red'}} icon= { 
-              hadiths[0]?.addedToFav?heart: heartOutline} />
+              isFav?heart: heartOutline} />
           </IonButton>
         </IonToolbar>
       </IonHeader>
