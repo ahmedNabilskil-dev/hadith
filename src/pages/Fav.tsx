@@ -69,7 +69,7 @@ import { basePath } from "../common/env";
                   >
                     <IonCardContent>
                       <IonText className="hadith-number ion-text-bold">
-                        Hadith No: {hadith.hadith_no}
+                        رقم الحديث: {hadith.hadith_no}
                       </IonText>
                       <p className="hadith-text">{hadith.hadith_text}</p>
                       <div className="breadcrumb-container">
