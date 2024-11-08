@@ -51,12 +51,11 @@ export const DrawerProvider: React.FC<{ children: React.ReactNode }> = ({
 
   useEffect(() => {
     const fetchLastVisitedHadith = async () => {
-      const response = await axios.get(`${basePath}/hadiths/lat-visited`);
-      const last = response.data.hadith_no;
+    const last = localStorage.getItem('last-visited-hadith')
       if (last) {
         addDrawer({
           Component: LastVisitedHadithDrw,
-          props: { lastHadithId: last },
+          props: { lastHadithId: Number(last) },
           isOpen: true, // Set the initial state as open
         });
       }

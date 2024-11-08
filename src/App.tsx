@@ -35,12 +35,10 @@ import "@ionic/react/css/typography.css";
 
 /* Theme variables */
 import { Capacitor } from "@capacitor/core";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./App.css"; // Create this CSS file for custom styles
 import { DrawerProvider } from "./Providers/DrawerProvider";
 import "./theme/variables.css";
-import { basePath } from "./common/env";
-import axios from "axios";
 
 export const platform = Capacitor.getPlatform();
 
@@ -73,15 +71,15 @@ const App: React.FC = () => {
               <IonTabBar slot="bottom" className="custom-tab-bar">
                 <IonTabButton tab="Maqsads" href="/maqsad">
                   <IonIcon aria-hidden="true" icon={bookOutline} />
-                  <IonLabel>Maqsads</IonLabel>
+                  <IonLabel>المقاصد</IonLabel>
                 </IonTabButton>
                 <IonTabButton tab="tab2" href="/tab2">
                   <IonIcon aria-hidden="true" icon={searchOutline} />
-                  <IonLabel>Search</IonLabel>
+                  <IonLabel>البحث</IonLabel>
                 </IonTabButton>
                 <IonTabButton tab="tab3" href="/tab3">
                   <IonIcon aria-hidden="true" icon={settingsOutline} />
-                  <IonLabel>Settings</IonLabel>
+                  <IonLabel>المذيد</IonLabel>
                 </IonTabButton>
               </IonTabBar>
             </IonTabs>

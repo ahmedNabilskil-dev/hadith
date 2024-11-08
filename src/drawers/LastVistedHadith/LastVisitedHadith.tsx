@@ -16,7 +16,7 @@ const LastVisitedHadithDrw: React.FC<LastVisitedHadithDrwProps> = ({
 
   const handleContinueReading = () => {
     history.push(`/hadith/${lastHadithId}`);
-    onClose(); // Close the drawer after navigating
+    onClose();
   };
 
   return (
