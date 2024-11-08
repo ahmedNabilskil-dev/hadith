@@ -18,6 +18,7 @@ import { bookOutline } from "ionicons/icons";
 import React, { useEffect, useState } from "react";
 import { basePath } from "../../common/env";
 import "./NotePage.css"; // Custom CSS file for beautiful styling
+import { useHistory } from "react-router";
 
 interface Note {
   _id: any;
@@ -59,6 +60,8 @@ const NotesPage: React.FC = () => {
     fetchNotes(page);
   }, []);
 
+  const history = useHistory()
+
   return (
     <IonPage>
       <IonHeader>
@@ -69,7 +72,7 @@ const NotesPage: React.FC = () => {
       <IonContent className="ion-padding notes-content">
         <IonList>
           {notes.map((note,i) => (
-            <IonItem key={i} className="note-item">
+            <IonItem key={i} className="note-item"  onClick={()=>history.push(`/hadith/${note.hadith_no}`)}>
               <IonThumbnail slot="start" className="note-thumbnail">
                 <IonIcon icon={bookOutline} />
               </IonThumbnail>
