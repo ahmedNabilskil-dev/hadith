@@ -47,7 +47,7 @@
     "typescript": "^5.1.6",
     "vite": "~5.2.0",
     "vitest": "^0.34.6",
-    "cordova-res": "^0.15.3",
+    "cordova-res": "^0.15.3"
   },
   "description": "An Ionic project"
 }
