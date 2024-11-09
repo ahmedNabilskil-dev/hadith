@@ -57,7 +57,7 @@ const AddNote: React.FC<AddNoteProps> = ({ onClose, hadith,reload }) => {
           id="note-title"
           value={noteTitle}
           placeholder="اكتب عنوان الملاحظة"
-          onIonChange={(e) => setNoteTitle(e.detail.value!)}
+          onIonInput={(e) => setNoteTitle(e.detail.value!)}
           className="note-input"
           clearInput
           required
@@ -68,7 +68,7 @@ const AddNote: React.FC<AddNoteProps> = ({ onClose, hadith,reload }) => {
           id="note-content"
           value={noteContent}
           placeholder="اكتب محتوى الملاحظة"
-          onIonChange={(e) => setNoteContent(e.detail.value!)}
+          onIonInput={(e) => setNoteContent(e.detail.value!)}
           className="note-textarea"
           autoGrow
           required
