@@ -28,7 +28,7 @@ const settingScreen: React.FC = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle className="ion-text-center">المقاصد</IonTitle>
+          <IonTitle className="ion-text-center">المذيد</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen className="ion-padding">
