@@ -11,4 +11,10 @@ export interface Ketab {
   maqsad_id: number;
   ketab_ayah: any;
   title: string;
+  fasls:Fasl[]
+}
+
+export interface Fasl{
+_id:number,
+name:string
 }

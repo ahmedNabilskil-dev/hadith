@@ -12,6 +12,7 @@ import {
 import { chevronBackOutline, chevronForwardOutline } from "ionicons/icons";
 import { useHistory, useParams } from "react-router-dom";
 import { useMaqsad } from "../Providers/SystemProvider";
+import { MaqsadI } from "../interfaces/Maqsad";
 
 interface BooksScreenProps {}
 
@@ -24,8 +25,13 @@ const BooksScreen: React.FC<BooksScreenProps> = () => {
     maqsads.find((maqsad) => maqsad._id.toString() === maqsadId)?.ketab || [];
 
   const handleBack = () => history.goBack();
-  const handleBookClick = (bookId: number) => {
-    history.push(`/categories/${bookId}`);
+  const handleBookClick = (book: MaqsadI['ketab'][number]) => {
+    if(book.fasls[0]._id){
+    
+      history.push(`/fasls?bookId=${book._id}&maqsadId=${maqsadId}`);
+    }else{
+      history.push(`/categories?bookId=${book._id}`);
+    }
   };
 
   return (
@@ -51,7 +57,7 @@ const BooksScreen: React.FC<BooksScreenProps> = () => {
               key={book._id}
               fill="clear" // Change to clear button style to match Maqsad design
               expand="block"
-              onClick={() => handleBookClick(book._id)}
+              onClick={() => handleBookClick(book)}
               className="book-button" // Custom class for additional styling
             >
               <div

@@ -41,6 +41,7 @@ import { DrawerProvider } from "./Providers/DrawerProvider";
 import "./theme/variables.css";
 import FavoriteHadiths from "./pages/Fav";
 import NotesPage from "./pages/Note/NotePage";
+import FaslScreen from "./pages/Fasl";
 
 export const platform = Capacitor.getPlatform();
 
@@ -60,7 +61,12 @@ const App: React.FC = () => {
                 <Route exact path="/notes" component={NotesPage} />
                 <Route
                   exact
-                  path="/categories/:bookId"
+                  path="/fasls"
+                  component={FaslScreen}
+                />
+                <Route
+                  exact
+                  path="/categories"
                   component={CategoriesScreen}
                 />
                 <Route

@@ -12,13 +12,24 @@ import {
 import axios from "axios";
 import { chevronBackOutline, chevronForwardOutline } from "ionicons/icons";
 import { useEffect, useState } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory, useLocation, useParams } from "react-router-dom";
 import { basePath } from "../common/env";
 import "./Categories.css";
 interface CategoriesScreenProps {}
 
 const CategoriesScreen: React.FC<CategoriesScreenProps> = () => {
-  const { bookId } = useParams<{ bookId: string }>();
+  const location = useLocation();
+
+  // Create a function to parse query parameters
+  const getQueryParams = (query:string) => {
+    return new URLSearchParams(query);
+  };
+
+  // Get the query parameters from the URL
+  const queryParams = getQueryParams(location.search);
+  const bookId = queryParams.get('bookId');
+  const faslId = queryParams.get('faslId');
+
   const history = useHistory();
 
   const [categories, setCategories] = useState<
@@ -27,7 +38,9 @@ const CategoriesScreen: React.FC<CategoriesScreenProps> = () => {
 
   const fetchCategories = async () => {
     try {
-      const res = await axios.get(`${basePath}/hadiths/categories/${bookId}`);
+      const res = await axios.get(`${basePath}/hadiths/categories`,{
+        params:{ketab_id:bookId,fasl_id:faslId}
+      });
       setCategories(res.data.categories || []);
     } catch (error) {
       console.error("Failed to fetch categories:", error);
@@ -50,7 +63,7 @@ const CategoriesScreen: React.FC<CategoriesScreenProps> = () => {
           <IonButton fill="clear" slot="start" onClick={handleBack}>
             <IonIcon icon={chevronForwardOutline} />
           </IonButton>
-          <IonTitle className="ion-text-center">الفصول</IonTitle>
+          <IonTitle className="ion-text-center">الابواب</IonTitle>
         </IonToolbar>
       </IonHeader>
 
