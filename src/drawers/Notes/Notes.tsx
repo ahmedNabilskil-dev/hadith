@@ -7,11 +7,12 @@ import "./Notes.css";
 interface AddNoteProps {
   onClose: () => void;
   hadith: any;
+  reload?:()=>void
 }
 
-const AddNote: React.FC<AddNoteProps> = ({ onClose, hadith }) => {
-  const [noteTitle, setNoteTitle] = useState("");
-  const [noteContent, setNoteContent] = useState("");
+const AddNote: React.FC<AddNoteProps> = ({ onClose, hadith,reload }) => {
+  const [noteTitle, setNoteTitle] = useState(hadith.title||"");
+  const [noteContent, setNoteContent] = useState(hadith.content||"");
   const [loading, setLoading] = useState(false);
   const [showToast, setShowToast] = useState(false);
 
@@ -22,7 +23,12 @@ const AddNote: React.FC<AddNoteProps> = ({ onClose, hadith }) => {
     if (trimmedTitle && trimmedContent) {
       setLoading(true);
       try {
-        await axios.post(
+      hadith.title ?
+      await axios.put(
+        `${basePath}/hadiths/edit-note/${hadith._id}`,
+        { title: trimmedTitle, content: trimmedContent, hadith_no: hadith.hadith_no },
+      )
+      :  await axios.post(
           `${basePath}/hadiths/add-note`,
           { title: trimmedTitle, content: trimmedContent, hadith_no: hadith.hadith_no },
           { params: { id: hadith._id } }
@@ -30,6 +36,7 @@ const AddNote: React.FC<AddNoteProps> = ({ onClose, hadith }) => {
         setLoading(false);
         setShowToast(true);
         onClose();
+        reload && reload()
       } catch (error) {
         setLoading(false);
         console.error("Error adding note:", error);
@@ -43,7 +50,7 @@ const AddNote: React.FC<AddNoteProps> = ({ onClose, hadith }) => {
   return (
     <div className="add-note-container" role="dialog" aria-labelledby="add-note-title">
       <IonText id="add-note-title" className="add-note-title">
-        إضافة ملاحظة
+        {hadith.title?"تعديل الملاحظه":"إضافة ملاحظة"}
       </IonText>
       <IonItem className="note-input-item">
         <IonInput
@@ -68,7 +75,7 @@ const AddNote: React.FC<AddNoteProps> = ({ onClose, hadith }) => {
         />
       </IonItem>
       <IonButton expand="block" color="primary" onClick={handleAddNote} className="add-note-button">
-        إضافة الملاحظة
+      {hadith.title?"تعديل الملاحظه":"إضافة ملاحظة"}
       </IonButton>
 
       {/* Loading Spinner */}
