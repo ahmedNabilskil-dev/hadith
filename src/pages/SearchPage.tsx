@@ -73,7 +73,7 @@ const SearchPage: React.FC = () => {
             value={searchKeyword}
             onIonChange={(e) => setSearchKeyword(e.detail.value!)}
             placeholder="ابحث عن حديث..."
-            debounce={500}
+            debounce={800}
             onIonInput={() => searchHadiths(true)}
           />
           <IonButton
