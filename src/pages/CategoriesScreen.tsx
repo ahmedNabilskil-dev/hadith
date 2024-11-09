@@ -48,7 +48,7 @@ const CategoriesScreen: React.FC<CategoriesScreenProps> = () => {
   };
 
   useEffect(() => {
-    fetchCategories();
+    bookId && fetchCategories();
   }, [bookId]);
 
   const handleBack = () => history.goBack();
