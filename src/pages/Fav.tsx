@@ -10,10 +10,13 @@ import {
   IonInfiniteScroll,
   IonInfiniteScrollContent,
   IonPage,
+  IonRefresher,
+  IonRefresherContent,
   IonRow,
   IonText,
   IonTitle,
-  IonToolbar
+  IonToolbar,
+  RefresherEventDetail
 } from "@ionic/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -30,20 +33,20 @@ const FavoriteHadithPage: React.FC = () => {
   const limit = 10; // Set the limit to 10 items per page
 
   // Fetch data every time the page is visited
-  useEffect(() => {
-    const fetchFavs = async () => {
-      const res = await axios.get(`${basePath}/hadiths/fav`, {
-        params: { page, limit },
-      });
-      if (res.data) {
-        // Append the new favorites to the existing list
-        setFavs((prev) => [...prev, ...res.data]);
+  const fetchFavs = async (page:number) => {
+    const res = await axios.get(`${basePath}/hadiths/fav`, {
+      params: { page, limit },
+    });
+    if (res.data) {
+      // Append the new favorites to the existing list
+      setFavs((prev) => [...prev, ...res.data]);
 
-        // Check if the number of fetched items is less than the limit (no more items)
-        setHasMore(res.data.length === limit); // If less than limit, set hasMore to false
-      }
-    };
-    fetchFavs();
+      // Check if the number of fetched items is less than the limit (no more items)
+      setHasMore(res.data.length === limit); // If less than limit, set hasMore to false
+    }
+  };
+  useEffect(() => {
+    fetchFavs(page);
   }, [page, location]);  // Add location to the dependency array to trigger the effect on route change
 
   const loadData = (event: any) => {
@@ -57,6 +60,13 @@ const FavoriteHadithPage: React.FC = () => {
 
   const handleBack = () => history.goBack();
 
+  const handleRefresh = async(event: CustomEvent<RefresherEventDetail>) => {
+    setFavs([]);
+   await fetchFavs(0)
+   event.detail.complete();
+
+  };
+
   return (
     <IonPage>
       <IonHeader>
@@ -68,6 +78,12 @@ const FavoriteHadithPage: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen className="ion-padding">
+      <IonRefresher slot="fixed" onIonRefresh={handleRefresh}>
+        <IonRefresherContent
+          pullingText="Pull to refresh"
+          refreshingSpinner="circles"
+        />
+      </IonRefresher>
         <IonGrid>
           <IonRow>
             {favs.map((hadith: any) => (

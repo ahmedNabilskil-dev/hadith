@@ -14,7 +14,10 @@ import {
   IonTitle,
   IonToolbar,
   IonAlert,
-  IonSpinner, // Import IonSpinner for loading indicator
+  IonSpinner,
+  IonRefresher,
+  IonRefresherContent,
+  RefresherEventDetail, // Import IonSpinner for loading indicator
 } from "@ionic/react";
 import { bookOutline, chevronForwardOutline, createOutline, trashOutline } from "ionicons/icons";
 import React, { useEffect, useState } from "react";
@@ -122,6 +125,13 @@ const NotesPage: React.FC = () => {
     }
   };
 
+  const handleRefresh = async(event: CustomEvent<RefresherEventDetail>) => {
+    setNotes([]);
+   await fetchNotes(0)
+   event.detail.complete();
+
+  };
+
   return (
     <IonPage>
       <IonHeader>
@@ -133,6 +143,12 @@ const NotesPage: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent className="ion-padding notes-content">
+      <IonRefresher slot="fixed" onIonRefresh={handleRefresh}>
+        <IonRefresherContent
+          pullingText="Pull to refresh"
+          refreshingSpinner="circles"
+        />
+      </IonRefresher>
         <IonList>
           {notes.map((note, i) => (
             <IonItem key={i} className="note-item" onClick={() => history.push(`/hadith/${note.hadith_no}`)}>
