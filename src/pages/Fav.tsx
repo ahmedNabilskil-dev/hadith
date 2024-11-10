@@ -47,7 +47,7 @@ const FavoriteHadithPage: React.FC = () => {
   };
   useEffect(() => {
     fetchFavs(page);
-  }, [page, location]);  // Add location to the dependency array to trigger the effect on route change
+  }, [page]);  // Add location to the dependency array to trigger the effect on route change
 
   const loadData = (event: any) => {
     if (hasMore) {

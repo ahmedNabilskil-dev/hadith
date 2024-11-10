@@ -78,7 +78,7 @@ const NotesPage: React.FC = () => {
     setPage(0);
     setHasMore(true);
     fetchNotes(0); // Start from page 0
-  }, [location]); // This will trigger every time the location changes
+  }, []); // This will trigger every time the location changes
 
   const handleBack = () => history.goBack();
 
